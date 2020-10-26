@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">weatherForecast</string>
+    <string name="welcomemsg">Welcome To Weather App</string>
+    <string name="emailid">Email</string>
+    <string name="userpassword">Password</string>
+    <string name="login">Login</string>
+    <string name="registeruser">SignUp</string>
+    <string name="signUp">"Register "</string>
+    <string name="back">"Login "</string>
+    <string name="userfullName">Full Name</string>
+    <string name="age">Age</string>
+    <string name="mobileNumber">Mobile</string>
+    <string name="userpassoword">Password</string>
+    <string name="confirmPassword">Retype password</string>
 </resources>

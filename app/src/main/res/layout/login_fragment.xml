@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="20dp" >
+
+    <FrameLayout
+        android:id="@+id/loginframeContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        />
+    <LinearLayout
+        android:background="#00B0FF"
+        android:id="@+id/login_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/welcomemsg"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:typeface ="sans"/>
+
+        <EditText
+            android:id="@+id/login_emailid"
+            android:singleLine="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_mail"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/emailid"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
+            android:textSize="16sp"
+            android:typeface ="sans"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#000000" />
+
+        <EditText
+            android:id="@+id/login_password"
+            android:singleLine="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_pass"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/userpassword"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
+            android:textSize="16sp"
+            android:typeface ="sans"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="15px"
+            android:background="#FFFFFF" />
+
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/login_back"
+            android:padding="3dp"
+            android:text="@string/login"
+            android:textColor="#fff"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:typeface ="sans"
+            />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#000000" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10px"
+            android:background="#FFFFFF" />
+
+        <Button
+            android:id="@+id/signupBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/login_back"
+            android:padding="3dp"
+            android:text="@string/registeruser"
+            android:textColor="#fff"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:typeface ="sans"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
