@@ -1,31 +1,26 @@
 package com.example.weatherforecast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 
-import com.example.weatherforecast.DBHelper.DatabaseHelper;
+import androidx.fragment.app.FragmentActivity;
+
 import com.example.weatherforecast.Fragment.LoginModuleFragment;
 
 public class LoginActivity extends FragmentActivity {
-    public DatabaseHelper helper = new DatabaseHelper(LoginActivity.this);
     private static EditText emailid,pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         LoginModuleFragment loginmodulefragment = new LoginModuleFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, loginmodulefragment).commit();
     }
     @Override
     public void onSaveInstanceState(Bundle outState)
     {
-
         emailid = (EditText) LoginModuleFragment.loginview.findViewById(R.id.login_emailid);
         outState.putString("emailid", emailid.getText().toString());
         pass = (EditText) LoginModuleFragment.loginview.findViewById(R.id.login_password);

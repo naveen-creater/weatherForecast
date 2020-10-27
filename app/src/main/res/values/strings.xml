@@ -12,4 +12,9 @@
     <string name="mobileNumber">Mobile</string>
     <string name="userpassoword">Password</string>
     <string name="confirmPassword">Retype password</string>
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="three">Three</string>
+    <string name="four">Four</string>
+    <string name="five">Five</string>
 </resources>
