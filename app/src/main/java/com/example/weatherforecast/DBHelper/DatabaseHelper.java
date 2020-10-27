@@ -44,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void insertData(Userdata userdata){
+    public boolean insertData(Userdata userdata){
         SQLiteDatabase dp = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_FULLNAME,userdata.getFullName());
@@ -56,15 +56,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try{
             dp.insert(TABLE_NAME, null ,values);
             Log.d("Insert SUCCESS", values.toString());
+            return true;
         } catch (Exception e){
             Log.d("Insert FAILURE", e.toString());
+            return false;
         }
-        //db.close();
     }
 
     public boolean userExists(String emailid,String password){
+        SQLiteDatabase DB = this.getReadableDatabase();
         String fetchuser = "Select emailid,password from " +TABLE_NAME;
-        Cursor cursor = db.rawQuery(fetchuser, null);
+        Cursor cursor = DB.rawQuery(fetchuser, null);
         String a,b = "not found";
         Log.d("received emailid", emailid);
         Log.d("Cursor count", String.valueOf(cursor.getCount()));
@@ -93,8 +95,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public String getUserName(String emailid){
+        SQLiteDatabase DB = this.getReadableDatabase();
         String fetchuser = "Select "+COLUMN_EMAILID+", "+COLUMN_FULLNAME+" from " +TABLE_NAME;
-        Cursor cursor = db.rawQuery(fetchuser, null);
+        Cursor cursor = DB.rawQuery(fetchuser, null);
         String a,b = "not found";
         Log.d("received emailid", emailid);
         Log.d("Cursor count", String.valueOf(cursor.getCount()));

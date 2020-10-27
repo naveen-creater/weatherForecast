@@ -33,7 +33,7 @@ public class SignUpModuleFragment extends Fragment {
         registerfragmentManager = getActivity().getSupportFragmentManager();
         getUserEnteredDetails();
         Log.d("fullName",fullName.getText().toString());
-        registerbutton = (Button) signupview.findViewById(R.id.signUpBtn);
+        registerbutton =  signupview.findViewById(R.id.signUpBtn);
         back = signupview.findViewById(R.id.back);
 
         registerbutton.setOnClickListener(v -> {
@@ -49,15 +49,16 @@ public class SignUpModuleFragment extends Fragment {
                 userdata.setMobileNo(mobileNumber.getText().toString());
                 userdata.setPassword(password.getText().toString());
 
-                Log.d("userdata.getFullname", userdata.getFullName());
-                Log.d("userdata.getEmailid", userdata.getEmail());
-                Log.d("userdata.getAge", String.valueOf(userdata.getAge()));
-                Log.d("userdata.getMobile", userdata.getMobileNo());
-                Log.d("userdata.getPassword", userdata.getPassword());
 
-                new DatabaseHelper(getActivity()).insertData(userdata);
+                boolean isInsert = new DatabaseHelper(getActivity()).insertData(userdata);
 
-                registerfragmentManager.beginTransaction().replace(R.id.fragment_container, new LoginModuleFragment(), "LoginModuleFragment").commit();
+                if(isInsert){
+                    Toast.makeText(getActivity(), "Insert data Sucessfully", Toast.LENGTH_SHORT).show();
+                    registerfragmentManager.beginTransaction().replace(R.id.fragment_container, new LoginModuleFragment(), "LoginModuleFragment").commit();
+                }else {
+                    Toast.makeText(getActivity(), "Insertion Failed", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
         });
@@ -104,6 +105,7 @@ public class SignUpModuleFragment extends Fragment {
         }
         // Check if both password should be equal
         else if (!getConfirmPassword.equals(getPassword)) {
+            confirmPassword.setText("");
             Toast.makeText(getActivity(), "Passwords don't match!", Toast.LENGTH_SHORT).show();
             return false;
         }
