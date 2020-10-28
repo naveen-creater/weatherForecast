@@ -34,7 +34,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         next = findViewById(R.id.next);
 
         names.add("One");names.add("Two");names.add("Three");names.add("Four");names.add("Five");
-
     }
 
     @Override

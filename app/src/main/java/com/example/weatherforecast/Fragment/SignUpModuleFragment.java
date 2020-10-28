@@ -17,10 +17,16 @@ import com.example.weatherforecast.Modelclass.Userdata;
 import com.example.weatherforecast.R;
 
 public class SignUpModuleFragment extends Fragment {
-    private static View signupview;
-    private static FragmentManager registerfragmentManager;
-    private static EditText fullName, emailId, mobileNumber, age, password, confirmPassword;
-    private static Button registerbutton,back;
+    private  View signupview;
+    private  FragmentManager registerfragmentManager;
+    private  EditText fullName;
+    private  EditText  emailId;
+    private  EditText  mobileNumber;
+    private  EditText  age;
+    private  EditText  password;
+    private  EditText  confirmPassword;
+    private  Button registerbutton;
+    private  Button back;
 
     public SignUpModuleFragment() {
 
@@ -48,7 +54,6 @@ public class SignUpModuleFragment extends Fragment {
                 userdata.setAge(Integer.parseInt(age.getText().toString()));
                 userdata.setMobileNo(mobileNumber.getText().toString());
                 userdata.setPassword(password.getText().toString());
-
 
                 boolean isInsert = new DatabaseHelper(getActivity()).insertData(userdata);
 

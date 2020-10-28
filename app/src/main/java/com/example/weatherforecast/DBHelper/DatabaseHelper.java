@@ -26,106 +26,96 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_PASSWORD = "password";
 
     private static final String CREATE_TABLE = "create table IF NOT EXISTS userdetails (id integer primary key not null , " +
-            "fullname text not null , emailid text not null, age integer not null, password text not null, mobileno text not null);" ;
+            "fullname text not null , emailid text not null, age integer not null, password text not null, mobileno text not null);";
 
 
-    public DatabaseHelper(Context context){
-        super(context,DATABASE_NAME, null , DATABASE_VERSION);
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(CREATE_TABLE);
-        this.db =db;
-        Log.d("Table created","created");
+        this.db = db;
+        Log.d("Table created", "created");
     }
 
-
-    public boolean insertData(Userdata userdata){
+    public boolean insertData(Userdata userdata) {
         SQLiteDatabase dp = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_FULLNAME,userdata.getFullName());
-        values.put(COLUMN_EMAILID,userdata.getEmail());
-        values.put(COLUMN_MOBILENO,userdata.getMobileNo());
-        values.put(COLUMN_AGE,userdata.getAge());
-        values.put(COLUMN_PASSWORD,userdata.getPassword());
+        values.put(COLUMN_FULLNAME, userdata.getFullName());
+        values.put(COLUMN_EMAILID, userdata.getEmail());
+        values.put(COLUMN_MOBILENO, userdata.getMobileNo());
+        values.put(COLUMN_AGE, userdata.getAge());
+        values.put(COLUMN_PASSWORD, userdata.getPassword());
 
-        try{
-            dp.insert(TABLE_NAME, null ,values);
+        try {
+            dp.insert(TABLE_NAME, null, values);
             Log.d("Insert SUCCESS", values.toString());
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.d("Insert FAILURE", e.toString());
             return false;
         }
     }
 
-    public boolean userExists(String emailid,String password){
+    public boolean userExists(String emailid, String password) {
         SQLiteDatabase DB = this.getReadableDatabase();
-        String fetchuser = "Select emailid,password from " +TABLE_NAME;
+        String fetchuser = "Select emailid,password from " + TABLE_NAME;
         Cursor cursor = DB.rawQuery(fetchuser, null);
-        String a,b = "not found";
+        String a, b = "not found";
         Log.d("received emailid", emailid);
         Log.d("Cursor count", String.valueOf(cursor.getCount()));
-        if(cursor.moveToFirst()){
-            Log.d("Select " , " clause");
-            do{
-                a= cursor.getString(0);
-                Log.d("a " , a);
-                if (a.equals(emailid)){
-                    Log.d("emailid  If loop" , a);
+        if (cursor.moveToFirst()) {
+            Log.d("Select ", " clause");
+            do {
+                a = cursor.getString(0);
+                Log.d("a ", a);
+                if (a.equals(emailid)) {
+                    Log.d("emailid  If loop", a);
                     b = cursor.getString(1);
-                    Log.d("b " , b);
+                    Log.d("b ", b);
                     break;
                 }
             }
-            while(cursor.moveToNext());
+            while (cursor.moveToNext());
         }
         if (b.equals(password)) {
-            Log.d("Returning "," true");
+            Log.d("Returning ", " true");
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
-
-
-
-    public String getUserName(String emailid){
+    public String getUserName(String emailid) {
         SQLiteDatabase DB = this.getReadableDatabase();
-        String fetchuser = "Select "+COLUMN_EMAILID+", "+COLUMN_FULLNAME+" from " +TABLE_NAME;
+        String fetchuser = "Select " + COLUMN_EMAILID + ", " + COLUMN_FULLNAME + " from " + TABLE_NAME;
         Cursor cursor = DB.rawQuery(fetchuser, null);
-        String a,b = "not found";
+        String a, b = "not found";
         Log.d("received emailid", emailid);
         Log.d("Cursor count", String.valueOf(cursor.getCount()));
-        if(cursor.moveToFirst()){
-            Log.d("Select " , " clause");
-            do{
-                a= cursor.getString(0);
-                Log.d("a " , a);
-                if (a.equals(emailid)){
-                    Log.d("emailid  If loop" , a);
+        if (cursor.moveToFirst()) {
+            Log.d("Select ", " clause");
+            do {
+                a = cursor.getString(0);
+                Log.d("a ", a);
+                if (a.equals(emailid)) {
+                    Log.d("emailid  If loop", a);
                     b = cursor.getString(1);
-                    Log.d("b " , b);
+                    Log.d("b ", b);
                     break;
                 }
             }
-            while(cursor.moveToNext());
+            while (cursor.moveToNext());
         }
         return b;
 
     }
 
-
-
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        String dropquery= "DROP TABLE IF EXISTS "+TABLE_NAME;
+        String dropquery = "DROP TABLE IF EXISTS " + TABLE_NAME;
         db.execSQL(dropquery);
         this.onCreate(db);
     }

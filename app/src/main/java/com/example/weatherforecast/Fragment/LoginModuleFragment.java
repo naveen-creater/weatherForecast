@@ -15,36 +15,39 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.weatherforecast.DBHelper.DatabaseHelper;
-import com.example.weatherforecast.LoginActivity;
 import com.example.weatherforecast.MainActivity;
 import com.example.weatherforecast.R;
 
 public class LoginModuleFragment extends Fragment {
     public static View loginview;
-    private static Button loginbtn, registerbtn;
-    private static FragmentManager loginfragmentManager;
-    private static EditText emailid,pass,fullname;
-
+    private Button loginbtn;
+    private Button registerbtn;
+    private FragmentManager loginfragmentManager;
+    private EditText emailid;
+    private EditText pass;
 
     public LoginModuleFragment() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         loginview = inflater.inflate(R.layout.login_fragment, container, false);
         loginfragmentManager = getActivity().getSupportFragmentManager();
 
-        loginbtn =  loginview.findViewById (R.id.loginBtn);
+//        initViews
+        loginbtn = loginview.findViewById(R.id.loginBtn);
+        registerbtn = loginview.findViewById(R.id.signupBtn);
+
+//        Listeners
         loginbtn.setOnClickListener((View.OnClickListener) v -> {
             Log.d("Login ", " clicked");
 
-            emailid =  loginview.findViewById(R.id.login_emailid);
-            pass =  loginview.findViewById(R.id.login_password);
+            emailid = loginview.findViewById(R.id.login_emailid);
+            pass = loginview.findViewById(R.id.login_password);
             Log.d("emailid ", emailid.getText().toString());
             Log.d("pass ", pass.getText().toString());
 
-            if(new DatabaseHelper(getActivity()).userExists(emailid.getText().toString(),pass.getText().toString())){
+            if (new DatabaseHelper(getActivity()).userExists(emailid.getText().toString(), pass.getText().toString())) {
 
                 String userfullname = new DatabaseHelper(getActivity()).getUserName(emailid.getText().toString());
                 Log.d("Retrieved userfullname", userfullname);
@@ -52,13 +55,11 @@ public class LoginModuleFragment extends Fragment {
                 i.putExtra("username", userfullname);
                 startActivity(i);
 
-            } else{
+            } else {
                 Toast.makeText(getActivity(), "Email and/or password don't match.", Toast.LENGTH_LONG).show();
             }
         });
 
-
-        registerbtn =  loginview.findViewById (R.id.signupBtn);
         registerbtn.setOnClickListener(v -> {
             final FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.fragment_container, new SignUpModuleFragment(), "SignUpFragmentTag");
@@ -67,7 +68,5 @@ public class LoginModuleFragment extends Fragment {
 
         return loginview;
     }
-
-
 
 }

@@ -9,7 +9,8 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.weatherforecast.Fragment.LoginModuleFragment;
 
 public class LoginActivity extends FragmentActivity {
-    private static EditText emailid,pass;
+    private EditText emailid;
+    private EditText pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +22,9 @@ public class LoginActivity extends FragmentActivity {
     @Override
     public void onSaveInstanceState(Bundle outState)
     {
-        emailid = (EditText) LoginModuleFragment.loginview.findViewById(R.id.login_emailid);
+        emailid = LoginModuleFragment.loginview.findViewById(R.id.login_emailid);
         outState.putString("emailid", emailid.getText().toString());
-        pass = (EditText) LoginModuleFragment.loginview.findViewById(R.id.login_password);
+        pass =  LoginModuleFragment.loginview.findViewById(R.id.login_password);
         outState.putString("password", pass.getText().toString());
         super.onSaveInstanceState(outState);
     }
@@ -38,7 +39,7 @@ public class LoginActivity extends FragmentActivity {
             Log.d("password+",pass.getText().toString());
             emailid.setText(savedInstanceState.getString("emailid"));
             pass.setText(savedInstanceState.getString("password"));
-            Log.d("Received emailid+++++++",savedInstanceState.getString("emailid"));
+            Log.d("Received ",savedInstanceState.getString("emailid"));
 
         }
     }
