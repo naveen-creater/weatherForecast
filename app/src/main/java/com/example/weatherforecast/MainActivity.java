@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 //        initViews
         initView();
 //        Button Listeners
@@ -105,6 +106,17 @@ public class MainActivity extends AppCompatActivity {
         headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
         headers.put("x-rapidapi-host", "community-open-weather-map.p.rapidapi.com");
         headers.put("x-rapidapi-key", "9337a5c37bmsh59403bdfdb4654ap191703jsn099f9b2707e2");
+
+        //        from notification
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null){
+            if(bundle.containsKey("location"))
+            {
+                String place = bundle.getString("location");
+                getCustomRequestVolley(place);
+                search.setText(place);
+            }
+        }
 
     }
 
