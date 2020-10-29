@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 String place = bundle.getString("location");
                 getCustomRequestVolley(place);
-                search.setText(place);
+                cityName.setText(place);
             }
         }
 

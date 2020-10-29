@@ -25,6 +25,22 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    flavorDimensions "1"
+    productFlavors {
+        qa {
+            dimension "1"
+            applicationIdSuffix ".weatherforecast"
+            versionNameSuffix "-weatherforecast"
+            applicationId "com.example.weatherforecast"
+        }
+
+        prod {
+            dimension "1"
+            applicationIdSuffix ".weatherforecast"
+            versionNameSuffix "-weatherforecast"
+            applicationId "com.example.weatherforecast"
+        }
+    }
 }
 
 dependencies {
@@ -32,14 +48,17 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
-    implementation 'com.google.firebase:firebase-messaging:17.3.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 //    Volley sdk and Recyclerview
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.google.code.gson:gson:2.8.6'
+//    Recycler and cardview
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.work:work-runtime:2.1.0'
+//   Firebase
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+
+
 }

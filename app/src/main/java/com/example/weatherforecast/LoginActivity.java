@@ -1,8 +1,11 @@
 package com.example.weatherforecast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -11,11 +14,19 @@ import com.example.weatherforecast.Fragment.LoginModuleFragment;
 public class LoginActivity extends FragmentActivity {
     private EditText emailid;
     private EditText pass;
+    private TextView skip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        skip = findViewById(R.id.skip);
+        skip.setOnClickListener(view -> {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        });
+
         LoginModuleFragment loginmodulefragment = new LoginModuleFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, loginmodulefragment).commit();
     }

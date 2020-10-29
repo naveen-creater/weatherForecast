@@ -18,4 +18,5 @@
     <string name="four">Four</string>
     <string name="five">Five</string>
     <string name="default_notification_channel_id">122</string>
+    <string name="skip"><u>Skip</u></string>
 </resources>

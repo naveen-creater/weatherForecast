@@ -11,33 +11,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Test2"></activity>
-        <activity android:name=".TestActivity">
+        <activity android:name=".ReciverSample"></activity>
+        <activity android:name=".Test2" />
+        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".RecyclerUtils.RecycleActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity
-            android:name=".RecyclerUtils.RecycleActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".SplashActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait" />
-
+            android:screenOrientation="fullSensor" /> <!-- Servce declare -->
         <service
             android:name=".FirebaseUtils.MyFirebaseMServicve"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
+        </service> <!-- Reciver Declare -->
+        <receiver android:name=".Reciver.SystemReciverSample">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

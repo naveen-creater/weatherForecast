@@ -29,7 +29,6 @@ public class MyFirebaseMServicve extends FirebaseMessagingService {
             sendNotification(remoteMessage.getNotification().getBody(),remoteMessage.getNotification().getTitle());
         }
 
-
     }
 
     @Override
