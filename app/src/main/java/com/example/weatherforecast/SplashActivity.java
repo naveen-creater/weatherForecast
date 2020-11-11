@@ -29,6 +29,7 @@ public class SplashActivity extends AppCompatActivity {
 //      initview
         initView();
 
+
         animation = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.animation_moving);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
