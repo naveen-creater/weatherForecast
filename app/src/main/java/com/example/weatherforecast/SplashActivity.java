@@ -9,15 +9,22 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
+
 public class SplashActivity extends AppCompatActivity {
     private Animation animation;
     private ImageView movingImg;
+    private Trace trace;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_splash);
+        //Custom firebase moniterning trace implementation
+        trace = FirebasePerformance.getInstance().newTrace("splash_trace");
+        trace.start();
 
 //      initview
         initView();
@@ -30,6 +37,7 @@ public class SplashActivity extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
+                trace.stop();
             }
             @Override
             public void onAnimationRepeat(Animation animation) { }

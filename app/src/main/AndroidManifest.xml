@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReciverSample"></activity>
+        <activity android:name=".Activity.MyViewPager"></activity>
+        <activity android:name=".ReciverSample" />
         <activity android:name=".Test2" />
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".TestActivity" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".RecyclerUtils.RecycleActivity"
@@ -42,6 +43,11 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+
+            <meta-data
+                android:name="firebase_performance_logcat_enabled"
+                android:value="true" />
     </application>
 
 </manifest>

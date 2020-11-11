@@ -8,5 +8,5 @@
         android:fromXDelta="0%p"
         android:toXDelta="75%p"
         android:duration="1500"
-        android:repeatCount="1" />
+        android:repeatCount="5" />
 </set>

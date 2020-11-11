@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+// Apply the Performance Monitoring plugin
+apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
     compileSdkVersion 29
@@ -59,6 +61,9 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 //   Firebase
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
+
+    //Firebase Performance Monitoring
+    implementation 'com.google.firebase:firebase-perf:19.0.9'
 
 
 }

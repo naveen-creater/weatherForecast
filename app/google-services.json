@@ -42,6 +42,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292084094592:android:3d5ea923c5c2d11aabb865",
+        "android_client_info": {
+          "package_name": "com.example.weatherforecast.weatherforecast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292084094592-ikqplf5amp20hd0asbhrkrs0oae3bccn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.weatherforecast.weatherforecast",
+            "certificate_hash": "85302b44f44e8c3272668b0e2314f76d29bbe56a"
+          }
+        },
+        {
+          "client_id": "292084094592-6djeppbqsethnk4jm280iba4bmgra4qh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdE9uL1EoNMyqNbss4XangRlot8dF66R4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292084094592-6djeppbqsethnk4jm280iba4bmgra4qh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
