@@ -39,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
                 trace.stop();
-                System.out.println("sample hit");
+                System.out.println("bug fixing is begin");
             }
             @Override
             public void onAnimationRepeat(Animation animation) { }
